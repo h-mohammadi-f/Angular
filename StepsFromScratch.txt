@@ -45,5 +45,39 @@ we should delete ng.ps1 file from C:\Users\Hooman\AppData\Roaming\npm\.
 4- we create Angular project with below command: 
 ng new client --strict false => routing: yes => styleshit=>CSS
 5- The first page showing is from src\index.html
+6- The index is using  <app-root> which is in app folder. it is the main component. it uses a HTML and CSS fle.
+7- We go to app.component.html and delete all code and just write dating app.
+8- We can send data from component to our template. and read it by {{}}
+9- Every Angular project has to have a module file. In this file we defined our components. We can import 
+other modules as well. 
+10- Extensions that help us for Angular: Angular Language Service, Angular Snippets
+11- We are going to send a request to our API: 
+    In app.module.ts ad the topp ads an import reference to httpclient and then we add it into imports. 
+12- Angular uses DI jus as we use in .NET Core.
+13- we declare a constructor in app component
+14- lifecycle event in Angular is first constructor then initial event. For this we add implements OnInit.
+15- Then we implement OnInit interface. 
+16- we add getUsers method and by using httpclient we send a request to pur API.
+17- We get the CORS blocked error.  ( Cros Origin Resource Sharing)
+18- What is CORS? It is a mechianism which block every front-end http request from another origin to API origin. 
+19- In the API project, in the startup file, in the ConfigureServices we add AddCors(). Prority is not important.
+20-  In the startup/configure method priority is important. Between UseRouting and UseAuthorization: UseCors().
+        app.UseCors(policy=>policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+21- Then we can use this code to show users in front end: 
+    <li *ngFor="let user of users">{{user.id}} - {{user.username}}</li>
+22- Variables are case-sensitive and camelcase. so=> userName
+23- Adding some stylesheets. We use Angular bootstrap because the normal bootstrap javascript get mess with
+    Angular when they want to manipulate the DOM. We use ngx-bootstrap
+24- in the client project we run this command: ng add ngx-bootstrap. It will manipulate 3 files. 
+          package.json , angular.json , src/app/app.module.ts
+25- We want to add font-awsome for icons. npm install font-awesome
+26- Add https. First we install the certificate. then in client we add ssl folder. Copy the certificate and key 
+in this folder. In Angular.json file in the section serve, in the options we add "sslKey":'./ssl/server.key', 
+"sslCert": "./ssl/server.crt", "ssl":true,
+
+
+
+
+
 
 
