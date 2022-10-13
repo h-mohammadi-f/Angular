@@ -1,0 +1,36 @@
+1- dotnet new sln
+2- dotnet new webapi -o API
+3- dotnet sln add API
+4- install C# extension
+5- install "C# Extensions" work with class better
+6- install Material Icon Theme extension
+7- To hide bin and obj => preference=>settings=>exclude=> add template **/bin and **/obj
+8- Implicit using in project file is to not write using in the files for .Net6.
+9- add entities folder to API and add a new class with the name of AppUser
+10- Add Nuget Gallery extension to find and install nuget packages easily. 
+11- After installing above extension, ctrl+shift+p to show commands. then type nuget and open nuget gallery.
+12- install Microsoft.EntityFrameworkCore 
+13- install Microsoft.EntityFrameworkCore.SqlServer (Or sqllite it depends on which provider)
+14- Add dbcontext. Create a new folder call it Data. Add a new class and call it DataContext.
+15- Derive the class from DbContext. 
+16- From actions chose constructor with options and add a constructor as below: 
+        public DataContext(DbContextOptions options) : base(options)
+17- Then we start to add our DbSets.
+18- add connection string in appsettings.development.json.
+19- inject db context into startup file/ configure services method as below: 
+            services.AddDbContext<DataContext>(options=>{
+                options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
+            });
+20- then install dotnet-ef tool by below command: 
+dotnet tool install --global dotnet-ef --version 5.0.17
+21-install Microsoft.EntityFrameworkCore.Design from nuget gallery.
+22- Now its time to add migration by execute this command in terminal: 
+dotnet ef migrations add InitialCreate -o Data/Migrations
+23- Then create database with below command: 
+dotnet ef database update
+24- Add UsersController to Controllers folder. Derive it from ControllerBase and give it below attributes:
+    [ApiController]
+    [Route("api/[controller]")]
+25- make an constructor and inject the db context. 
+26- create 2 get methods.
+27- make the code async.
