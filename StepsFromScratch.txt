@@ -75,6 +75,53 @@ other modules as well.
 in this folder. In Angular.json file in the section serve, in the options we add "sslKey":'./ssl/server.key', 
 "sslCert": "./ssl/server.crt", "ssl":true,
 
+************************** End of First step of Angular Front-End App ********************************************
+1- we are going to have a look at store password in DB, using inheritance in C# - DRY, using C# debuger,
+Data transfer onjects, Validation, json web tokens JWTs, services in C$, Middleware, and extension methods DRY.
+
+2- For hashing password in DB we will use password salt.  Then we weill use ASP.NET Core Identity. 
+
+3- Update class App user with two byte properties password and password salt. 
+
+4- Add the migration into EF by this command: dotnet ef migrations add userpasswordadded
+then update the DB by:   dotnet ef database update
+
+5- Becasue we want to not repeat ourself for preparing controller, we created a base controller and then we will use
+inheritance.
+
+6- We inheritance UsersController from BaseApiController and removed the attributes from UsersController.
+7- We added AccountController.
+8-ApiController attribute will bind the input parameters of a method to the sent parameters from request. For example
+for Register methof in AccountController. 
+9- Describe what is a DTO. 
+10-Adding RegisterDto class then use t into Register method.
+11- We validate data in DTOs.
+12- How we can authenticate with our API? Json Web Tokens ( JWT)
+13- Add a folder and add ITokenInterface
+14- Create a services folder and add TokenService anf then add this service to startup for DI. 
+15- Singlton, Scoped = > when the request is finished the service will dispose. Transient=> Not right for HTTP rquest. 
+16- We added interface for testing, for example MockTest. 
+17- From Nuget Gallery add System.IdentityModel.Tokens.Jwt
+18- developing tokenhandler in token service.
+19- Change the return type of registe and login methods in account controller.
+20- Add tokenKey configuration to appsetings.development.json.
+21- To authorize our methods we add attributes to UsersController.
+22- We need to add Microsoft.AspNetCore.Authentication.JwtBearer from Nuget gallery. 
+23- Then we need to add Authentication service to our startup file. ( ConfigureServices)
+24- Then we need to add middleware. (ordering is important)above app.UseAuthorization=>app.UseAuthentication();
+25- The system will work. For sending request by post man we should authorization to header with Bearer. 
+26- Add extension methods and clean up our startup file. 
+
+***************************************End of section 4 *************************************************************
+
+
+
+
+
+
+
+
+
 
 
 
