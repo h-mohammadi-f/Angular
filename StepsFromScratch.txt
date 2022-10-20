@@ -113,6 +113,50 @@ for Register methof in AccountController.
 26- Add extension methods and clean up our startup file. 
 
 ***************************************End of section 4 *************************************************************
+1- Creating a navbar using ng command in the src/app folder: ng g c nav --skip-tests
+2- create the nav element from bootstrap page and copy it into html
+3- add nav-app component to the app.components.html 
+4- Angular form and login. Add FormModule into app module
+5- Angular provides 2 way binding. We can bind our data from our component and display them in template or
+we can data from form and update something in our component.
+6- For making a form as Angular form we add #formName="ngForm" and for linking it to a method we use (ngSubmi)="method()"
+7- We should give our input a property of name then [(ngModel)]= "" 
+* The sqaure bracket [] means we want to receive data from component and () is for sending to component.
+8- Add _services folder for our services.
+9- we add a service into this folder by command  ng g s account --skip-tests
+10- About this service: injectable means we can inject it into other services. services are Singlton. It means when a 
+service is created it will remain until user close the browser. 
+11- Injecting a service to our component: In constructor we inject it.
+12- observable is lazy :) we need to subscribe it.
+13- Conditional viewing: *ngIf="loggedIn"
+14- for functionality to dropdown we add this to app module : import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+and     BsDropdownModule.forRoot() to appmodule=> imports
+
+15- Observalble: New standard for managing async data included in ES7 (ES2016).
+                 Introduced in Angular 2
+                 Observable are lazy collections of multiple values over time
+                 YOu can think of obseravkes like a newsletter ( You need to subscribe them)
+
+Promise: Provides a single future value, Not lazy, cannot cancel
+Observable: Emits mutiple values over time, Lazy, Able to cancel, can use with map, filter, reduce,...
+
+16- RxJS =>  observable.Pipe(map(members=>{console.log(member.id)}))
+
+17- Persist on login: Changes in account service and nav.component and create loal storage variable. 
+* Rememebr: | async will automatically unsubscribe if there is not anything.
+18- Create a home component: ng g c home --skip-tests
+19- Design the Home html. 
+20- Create a register component: ng g c register --skip-tests
+21- Design the component.
+22- Parent to child communication: in the child component we create @Input() variable. then from parent when we want
+to call the child we pass the parameter by []=
+23- Send data from child to parent:  add to child => @Output() cancelRegister = new EventEmitter();
+then call it :     this.cancelRegister.emit(false); then in the parent component with () we can access to this method.
+(cancelRegister)="cancelRegisterMode($event)
+
+24- Hooking up the register method to the service
+
+
 
 
 
