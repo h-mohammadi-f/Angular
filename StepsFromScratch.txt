@@ -156,19 +156,68 @@ then call it :     this.cancelRegister.emit(false); then in the parent component
 
 24- Hooking up the register method to the service
 
+***************************************End of section 5 *************************************************************
 
+Angular routing 
 
+1- Adding more components : member-list, nenber-detail, lists, messages
+2- add our route's path in app-routing.module.ts in the const routes: Routes  array. 
+3- then we need to add arouter outlet: open app-component.html and replace app-home with router-outlet
+4- add routing to our navbar replace href with: routerLink="/messages"
+5- to highlit which link is on: if we add class active to the navbar it will show it brighter. We want router to add this
+class. we add routerLinkActive="active" to the links. 
+6- access router from our component: inject Router into nav bar ts. then redirect in login and logout. 
+      this.router.navigateByUrl('/members');
 
+7- Notification: add a package : Toaster 
+8- navigate to root folder of ui project (client) and run npm install ngx-toastr@13.0.0 --save
+9- add some new styleshit to angular.json: 
+              "./node_modules/font-awesome/css/font-awesome.css",
+              "./node_modules/ngs-toastr/toastr.css",
 
+10- import toastr module to app.module.ts file as : 
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    })
+11- becasue we chaned our angular.json file we need to restar app. 
+12- Inject toastr into nav and register componnet and in error we add toastr.error. 
+13- adding angular route guard: inside app folder we ceate a new folder: _guards
+14- go into _gurds folder and execute ng g guard auth --skip-tests and then choose CanActivate
+15- remove these 2 parameter from auth.guard.ts canActivate function and other type of return instead of Observable: 
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+16- add a constructor and inject account service and toastr.
+17- in canActivate we pipe the current user from account service and if the user is null we add toastr message.
+18- in app-routinng.module.ts on the paths we add canActivate: [AuthGuard]
+19- Now we want to add a dummy route to add routeGuard to all our components. 
+20- add a dummy route to app-routing.module.ts as below and cut other paths and paste them as the children:
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate:[AuthGuard],
+    children: [
+      { path: 'members', component: MemberListComponent, canActivate: [AuthGuard] },
+      { path: 'members/:id', component: MemberDetailComponent },
+      { path: 'lists', component: ListsComponent },
+      { path: 'messages', component: MessagesComponent }
+    ]
+  },
 
+  21- in the nav html we add ng-container. it will not generate any html. it will be better to put our ngif in it. 
 
-
-
-
-
-
-
-
+  22- adding a new theme: bootswatch.com free themes. we need to install it. 
+  23 we go to root of our project. then we use npm install bootswatch. npm install bootswatch@4.5.2
+  24- add               "./node_modules/bootswatch/dist/united/bootstrap.css",
+ into angular.json after bootstrap and restart the app.
+ 25- we changed the bg-dark to bg-primary in nav html and button as well. 
+ 26- we want to show the correct user insetead of welcom user: in nav component when we add welcom user we do these: 
+         <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+            <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.username| titlecase}}</a>
+27- House keeping: we want to keep our app.module.ts file in import section clean.
+28- in the app folder we add a folder : _modules and run ng g m shared --flat
+29- open the added module and then cut extrta added imports and then paste them into sharedmodules and add imports.
+30- then we add sharedmodules in app.module.ts and then export the modules in shared module.   
+***************************************End of section 6 *************************************************************
 
 
 
