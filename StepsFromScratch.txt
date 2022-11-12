@@ -218,6 +218,17 @@ class. we add routerLinkActive="active" to the links.
 29- open the added module and then cut extrta added imports and then paste them into sharedmodules and add imports.
 30- then we add sharedmodules in app.module.ts and then export the modules in shared module.   
 ***************************************End of section 6 *************************************************************
-
+1- In this section we are going to learn: 1- API Middleware, 2- Angular Interceptors, 3- Troubleshooting exception
+2- Add a controller to API with the name of Buggy.
+3- inherite from BaseApiController and add a constructor and inject DataContext. 
+4- add some httpget requests.
+5- In RegisterDto we added some more dataanontation. StringLength for password.
+6- we not write our code in try catch blocks. We will create a global exception handler class.
+7- Create a new folder in the root and call it Error. 
+8- Add a new class in it and call it ApiException. And create properties and constructor.
+9- Add another folder with the name of Middleware in the root path.
+10- Add a class with the name of ExceptionMiddleware.
+11- add the required code in this class as it is.
+12- add our middleware in the first list of configure method in the startup.cs and remove if is development.
 
 
