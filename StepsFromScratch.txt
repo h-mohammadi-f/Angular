@@ -1,16 +1,19 @@
 1- dotnet new sln (If we so not use any name, it will automatically create it same as folder name)
-2- dotnet new webapi -o API
+2- dotnet new webapi -n API
 3- dotnet sln add API
 4- install C# extension - Enable async auto compleation and import complation from extension setting. 
 organiza imports on format - 
 5- install "C# Extensions" work with class better.
 6- install Material Icon Theme extension
 7- To hide bin and obj => preference=>settings=>exclude=> add template **/bin and **/obj
+7-1 For running project with specific profile from launchsettings, we should use dotnet run -lp https
+7-2 Formaking things easy, we remove profiles from launchsettings and swagger usings from project file. 
+7-3 We shuold run dotnet restore to remove using from our application. Edit program.cs file.
 8- Implicit using in project file is to not write using in the files for .Net6.
 9- add entities folder to API and add a new class with the name of AppUser
 10- Add Nuget Gallery extension to find and install nuget packages easily. 
 11- After installing above extension, ctrl+shift+p to show commands. then type nuget and open nuget gallery.
-12- install Microsoft.EntityFrameworkCore 
+12- install Microsoft.EntityFrameworkCore  and install Microsoft.EntityFrameworkCore.Design
 13- install Microsoft.EntityFrameworkCore.SqlServer (Or sqllite it depends on which provider)
 14- Add dbcontext. Create a new folder call it Data. Add a new class and call it DataContext.
 15- Derive the class from DbContext. 
@@ -24,7 +27,7 @@ organiza imports on format -
             });
 20- then install dotnet-ef tool by below command: 
 dotnet tool install --global dotnet-ef --version 5.0.17
-21-install Microsoft.EntityFrameworkCore.Design from nuget gallery.
+21-install Microsoft.EntityFrameworkCore.Design from nuget gallery. (installed at step 12)
 22- Now its time to add migration by execute this command in terminal: 
 dotnet ef migrations add InitialCreate -o Data/Migrations
 23- Then create database with below command: 
